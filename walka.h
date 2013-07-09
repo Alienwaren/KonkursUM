@@ -1,13 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-using namespace std;
+using std::cout;
+using std::endl;
 using namespace sf;
 class walka
 {
 public:
 	walka(void);
-	int sprawdzKolizje(FloatRect zrodlo, FloatRect cel);
+	void walcz();
 	~walka(void);
 	bool wystapila;
 };

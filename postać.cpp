@@ -14,6 +14,7 @@ postaæ::postaæ(void)
 	obr = str * 0,5;
 	przyspieszenie = 2.f;
 	maxSzybkosc = 5;
+	
 	zyje = false;
 	
 }
@@ -63,17 +64,33 @@ void postaæ::ruchDol()
 }
 void postaæ::ruchGora()
 {
-
+		szybkosc += maxSzybkosc;
+	duchPostaci.move(0, -przyspieszenie);
+	if(szybkosc > maxSzybkosc)
+	{
+		szybkosc = maxSzybkosc;
+	}
 }
 void postaæ::ruchLewo()
 {
-
+	szybkosc += maxSzybkosc;
+	duchPostaci.move(-przyspieszenie, 0);
+	if(szybkosc > maxSzybkosc)
+	{
+		szybkosc = maxSzybkosc;
+	}
 }
 void postaæ::ruchPrawo()
 {
-
+	szybkosc += maxSzybkosc;
+	duchPostaci.move(przyspieszenie, 0);
+	if(szybkosc > maxSzybkosc)
+	{
+		szybkosc = maxSzybkosc;
+	}
 }
 
 postaæ::~postaæ(void)
 {
+	
 }

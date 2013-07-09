@@ -1,17 +1,15 @@
 #include "walka.h"
+#include "postaæ.h"
+#include "enemy.h"
 
 walka::walka(void)
 {
 	wystapila = false;
 }
-int walka::sprawdzKolizje(FloatRect zrodlo, FloatRect cel)
+void walka::walcz()
 {
-	if(zrodlo.intersects(cel))
-	{
-		cout << "Znaleziono kolizje!" << endl;
-		wystapila = true;
-	}
-	return wystapila; 
+	cout << "WALKA!" << endl;
+	wystapila = true;
 }
 
 walka::~walka(void)

@@ -10,7 +10,7 @@
 #include "enemy.h"
 #include "walka.h"
 #include "zegar.h"
-using namespace std;
+using std::cout;
 using namespace sf;
 
 
@@ -77,7 +77,7 @@ int main()
 				}
 				if(Keyboard::isKeyPressed(Keyboard::W)) // ruch postaci, ujemne do góry lub w lewo
 				{
-					gracz_glowny.duchPostaci.move(0, -5);
+					gracz_glowny.ruchGora();
 				
 				}
 				if(Keyboard::isKeyPressed(Keyboard::S))
@@ -87,22 +87,21 @@ int main()
 				}
 				if(Keyboard::isKeyPressed(Keyboard::A))
 				{
-					gracz_glowny.duchPostaci.move(-5, 0);
+					gracz_glowny.ruchLewo();
 						
 				}
 				if(Keyboard::isKeyPressed(Keyboard::D))
 				{
-					gracz_glowny.duchPostaci.move(5, 0);
+					gracz_glowny.ruchPrawo();
 					
 				}
 				if(Keyboard::isKeyPressed(Keyboard::R)) // DO WYWALENIA, TYLKO DO DEWELOPERKI!
 				{
 					zegarSys.zegar1.restart();
 				}
-				if(gracz_glowny.kolizja.intersects(waz.kolizjaWrog))
+				if(gracz_glowny.kolizja.intersects(waz.kolizjaWrog) && systemWalki.wystapila == false)
 				{
-						cout << "wykryto kolizje" << endl;
-						
+						systemWalki.walcz();
 		
 				}
 				

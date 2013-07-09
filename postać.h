@@ -20,6 +20,7 @@ public:
 	Sprite duchPostaci;
 	FloatRect kolizja;
 	bool sprawdzKolizje();
+	int obrazenia;
 	void ustawObwiednie();
 protected:
 	int str;

@@ -17,6 +17,7 @@ enemy::enemy(void)
 	ruszylKrok1 = false;
 	iloscKrokow = 0;
 	pozycja_x = duchWrog.getPosition();
+	
 	zyje = true;
 }
 int enemy::wczytaj()
