@@ -12,6 +12,8 @@ postaæ::postaæ(void)
 	mana = intel * 10;
 	hp = str * 10;
 	obr = str * 0,5;
+	przyspieszenie = 2.f;
+	maxSzybkosc = 5;
 	zyje = false;
 	
 }
@@ -50,8 +52,27 @@ bool postaæ::czyZyje()
 	return zyje;
 	
 }
+void postaæ::ruchDol()
+{
+	szybkosc += maxSzybkosc;
+	duchPostaci.move(0, przyspieszenie);
+	if(szybkosc > maxSzybkosc)
+	{
+		szybkosc = maxSzybkosc;
+	}
+}
+void postaæ::ruchGora()
+{
 
+}
+void postaæ::ruchLewo()
+{
 
+}
+void postaæ::ruchPrawo()
+{
+
+}
 
 postaæ::~postaæ(void)
 {

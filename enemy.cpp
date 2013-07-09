@@ -11,8 +11,8 @@ enemy::enemy(void)
 	mana = intel * 10;
 	hp = str * 10;
 	obr = 0,5 * str;
-	krok1 = seconds(5);
-	przyspieszenie = 0.1f;
+	krok1 = seconds(1);
+	przyspieszenie = 0.5f;
 	maxSzybkosc = 10;
 	ruszylKrok1 = false;
 	iloscKrokow = 0;
@@ -41,13 +41,17 @@ void enemy::ustawObwiednie()
 	kolizjaWrog = duchWrog.getGlobalBounds();
 
 }
-bool enemy::ruch(bool krok)
+bool enemy::ruch(bool krok) // dot. ruchu. Patrz funkcja w zegar.cpp/porownanie();
 {
-	if(krok == true && iloscKrokow <= 5 && szybkosc <= maxSzybkosc)
+	if(krok == true && iloscKrokow <= 100)
 	{
 		szybkosc += przyspieszenie;
 		duchWrog.move(0, -przyspieszenie);
-		
+		if(szybkosc > maxSzybkosc)
+		{
+			szybkosc = maxSzybkosc;
+		}
+		iloscKrokow++;
 	}
 	return krok;
 	

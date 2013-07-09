@@ -12,6 +12,10 @@ public:
 	postaæ(void);
 	int zaladuj();
 	bool czyZyje();
+	void ruchDol();
+	void ruchGora();
+	void ruchLewo();
+	void ruchPrawo();
 	~postaæ(void);
 	Sprite duchPostaci;
 	FloatRect kolizja;

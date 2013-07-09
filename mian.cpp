@@ -46,15 +46,15 @@ int main()
 		zycieGracz = gracz_glowny.czyZyje();
 		zycieWaz = waz.czyZyje();
 		
-
-	  
+		zegarSys.wyswietlCzas();
+		gracz_glowny.ustawObwiednie();
+	     waz.ustawObwiednie();
+		zegarSys.sprawdzCzas(zegarSys.minal1, waz.krok1);
+		waz.ruch(zegarSys.porownanieCzas);
+		
 			while (Okno.pollEvent(zdarzenia)) // petla zdarzen
 			{
-				zegarSys.wyswietlCzas();
-				gracz_glowny.ustawObwiednie();
-	        	waz.ustawObwiednie();
-				zegarSys.sprawdzCzas(zegarSys.minal1, waz.krok1);
-				waz.ruch(zegarSys.porownanieCzas);
+				
 			
 				 if(zdarzenia.type == Event::Closed) // zdarzenie reaguj¹ce na zamkniêcie okna
 				 {
@@ -82,7 +82,7 @@ int main()
 				}
 				if(Keyboard::isKeyPressed(Keyboard::S))
 				{
-					gracz_glowny.duchPostaci.move(0, 5);
+					gracz_glowny.ruchDol();
 						
 				}
 				if(Keyboard::isKeyPressed(Keyboard::A))
@@ -95,7 +95,7 @@ int main()
 					gracz_glowny.duchPostaci.move(5, 0);
 					
 				}
-				if(Keyboard::isKeyPressed(Keyboard::R))
+				if(Keyboard::isKeyPressed(Keyboard::R)) // DO WYWALENIA, TYLKO DO DEWELOPERKI!
 				{
 					zegarSys.zegar1.restart();
 				}

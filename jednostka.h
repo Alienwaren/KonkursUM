@@ -1,6 +1,8 @@
 #pragma once
 #ifndef _H_JEDNOSTKA_
 #define _H_JEDNOSTKA_
+#include <SFML\Graphics.hpp>
+using namespace sf;
 class jednostka
 {
 public:

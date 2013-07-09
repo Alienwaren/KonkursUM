@@ -19,7 +19,7 @@ Time zegar::wyswietlCzas()
   return minal1;
 
 }
-bool zegar::sprawdzCzas(Time porownywana, Time porownanie)
+bool zegar::sprawdzCzas(Time porownywana, Time porownanie) // porownanie czy ruch moze zostac wykonany, patrz main i zegar.h
 {
 	porownanieCzas = (porownywana >= porownanie);
 	return porownanieCzas;
