@@ -10,7 +10,7 @@ class postaæ :
 {
 public:
 	postaæ(void);
-	int zaladuj();
+	float zaladuj();
 	bool czyZyje();
 	void ruchDol();
 	void ruchGora();
@@ -20,19 +20,19 @@ public:
 	Sprite duchPostaci;
 	FloatRect kolizja;
 	bool sprawdzKolizje();
-	int obrazenia;
 	void ustawObwiednie();
+	float obr;
+	float hp;
+	float cryt;
 protected:
-	int str;
-	int intel;
-	int agl;
-	int AC;
-	int hp;
-	int mana;
-	int lvl;
-	int exp;
-	int obr;
-	int iloscKrokow;
+	float str;
+	float intel;
+	float agl;
+	float AC;
+	float mana;
+	float lvl;
+	float exp;
+	float iloscKrokow;
 	bool zyje;
 	float przyspieszenie;
 	float szybkosc;

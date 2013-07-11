@@ -10,14 +10,14 @@ enemy::enemy(void)
 	intel = 2;
 	mana = intel * 10;
 	hp = str * 10;
-	obr = 0,5 * str;
+	obr = str * 0.5f;
 	krok1 = seconds(1);
 	przyspieszenie = 0.5f;
 	maxSzybkosc = 10;
 	ruszylKrok1 = false;
 	iloscKrokow = 0;
+	cryt = (agl * 0.5f)/ 100;
 	pozycja_x = duchWrog.getPosition();
-	
 	zyje = true;
 }
 int enemy::wczytaj()

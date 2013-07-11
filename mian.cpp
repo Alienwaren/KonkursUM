@@ -17,6 +17,7 @@ using namespace sf;
 
 int main()
 {
+	/* utworzenie obiektów */
   plansza mapa;
   postaæ gracz_glowny;
   Czcionka Wersja;
@@ -45,10 +46,9 @@ int main()
 		zegarSys.wlacz_zegar();
 		zycieGracz = gracz_glowny.czyZyje();
 		zycieWaz = waz.czyZyje();
-		
-		zegarSys.wyswietlCzas();
+		//zegarSys.wyswietlCzas();
 		gracz_glowny.ustawObwiednie();
-	     waz.ustawObwiednie();
+	    waz.ustawObwiednie();
 		zegarSys.sprawdzCzas(zegarSys.minal1, waz.krok1);
 		waz.ruch(zegarSys.porownanieCzas);
 		
@@ -101,7 +101,9 @@ int main()
 				}
 				if(gracz_glowny.kolizja.intersects(waz.kolizjaWrog) && systemWalki.wystapila == false)
 				{
-						systemWalki.walcz();
+						systemWalki.walcz(gracz_glowny.hp, gracz_glowny.obr, waz.hp, waz.obr);
+						waz.hp = systemWalki.przeciwnikHP;
+						gracz_glowny.hp = systemWalki.graczHP;
 		
 				}
 				

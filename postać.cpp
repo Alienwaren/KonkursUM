@@ -11,15 +11,15 @@ postaæ::postaæ(void)
 	agl = 15;
 	mana = intel * 10;
 	hp = str * 10;
-	obr = str * 0,5;
+    obr = str * 0.5f;
 	przyspieszenie = 2.f;
 	maxSzybkosc = 5;
-	
+	cryt = (agl * 0.5f)/ 100;
 	zyje = false;
 	
 }
 //ladowanie i inicjacja grafiki gracza glowniego // TODO: ulepszyæ jego grafikê
-int postaæ::zaladuj()
+float postaæ::zaladuj()
 {
 	if(!grafikaPostaci.loadFromFile("char.png"))
 	{
