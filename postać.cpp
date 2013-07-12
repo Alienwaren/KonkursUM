@@ -90,6 +90,7 @@ void postaæ::ruchPrawo()
 	}
 }
 
+
 postaæ::~postaæ(void)
 {
 	

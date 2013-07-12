@@ -24,6 +24,8 @@ public:
 	float obr;
 	float hp;
 	float cryt;
+	bool zycieGracz;
+	bool zyje;
 protected:
 	float str;
 	float intel;
@@ -33,7 +35,6 @@ protected:
 	float lvl;
 	float exp;
 	float iloscKrokow;
-	bool zyje;
 	float przyspieszenie;
 	float szybkosc;
 	float maxSzybkosc;

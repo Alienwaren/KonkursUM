@@ -17,6 +17,7 @@ public:
 	Sprite duchWrog;
 	FloatRect kolizjaWrog;
 	Time krok1;
+	bool zycieWaz;
 protected:
 	Texture grafikaWrog;
 	bool ruszylKrok1;

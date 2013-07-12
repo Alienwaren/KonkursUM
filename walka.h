@@ -15,6 +15,10 @@ public:
 	float graczHP;
 	float przeciwnikHP;
 	~walka(void);
-	bool wystapila;
+	bool rozpocznijWalke(bool kolizja);
+	bool rozpoczeta;
+	bool komunikat;
+	bool komunikat2;
+	Time przerwa;
 };
 
