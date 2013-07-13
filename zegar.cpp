@@ -5,7 +5,7 @@ zegar::zegar(void)
 {
 	
 }
-Time zegar::wlacz_zegar()
+Time zegar::wlaczZegar()
 {
 	
  
@@ -19,12 +19,15 @@ Time zegar::wyswietlCzas()
   return minal1;
 
 }
-bool zegar::sprawdzCzas(Time porownywana, Time porownanie) // porownanie czy ruch moze zostac wykonany, patrz main i zegar.h
+bool zegar::sprawdzCzas(Time porownywana, Time porownanie) // porownanie czy czynnosc moze zostac wykonana, patrz main i zegar.h
 {
 	porownanieCzas = (porownywana >= porownanie);
 	return porownanieCzas;
 }
-
+void zegar::restartZegar()
+{
+	zegar1.restart();
+}
 zegar::~zegar(void)
 {
 }

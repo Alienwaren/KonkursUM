@@ -4,11 +4,12 @@ walka::walka(void)
 {
 	graczHP = 0;
 	przeciwnikHP = 0;
-	srand(time(NULL));
 	przerwa = seconds(5);
 	rozpoczeta = false;
 	komunikat = false;
 	komunikat2 = false;
+	zycieGracz = true;
+	zycieWrog = true;
 	
 }
 bool walka::rozpocznijWalke(bool kolizja)
@@ -26,6 +27,16 @@ bool walka::rozpocznijWalke(bool kolizja)
 }
 float walka::walcz(float walczacyHP, float walczacyObr, float broniacyHP, float broniacyObr)
 {
+	if(walczacyHP <= 0)
+	{
+		zycieGracz = false;
+		return zycieGracz, walczacyHP, broniacyHP, zycieWrog;
+	}
+	if(broniacyHP <= 0)
+	{
+		zycieWrog = false;
+		return zycieGracz, walczacyHP, broniacyHP, zycieWrog;
+	}
 	walczacyHP = walczacyHP - broniacyObr;
 	broniacyHP = broniacyHP - walczacyObr;
 	cout << walczacyHP << " " << broniacyHP << endl;

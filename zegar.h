@@ -7,14 +7,14 @@ class zegar
 {
 public:
 	zegar(void);
-	Time wlacz_zegar();
+	Time wlaczZegar();
 	 Clock zegar1;  
 	 bool sprawdzCzas(Time porownywana, Time porownanie);
 	 Time wyswietlCzas();
 	 Time minal1;
 	 Time krok1;
 	 bool porownanieCzas;
-	 
+	 void restartZegar();
 	~zegar(void);
 };
 

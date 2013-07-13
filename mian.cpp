@@ -10,6 +10,7 @@
 #include "enemy.h"
 #include "walka.h"
 #include "zegar.h"
+#include <ctime>
 using std::cout;
 using namespace sf;
 
@@ -17,7 +18,8 @@ using namespace sf;
 
 int main()
 {
-	/* utworzenie obiektów */
+	srand(time(NULL)); // maszyna losuj¹ca do ruchu, patrz enemy.h, zmienna ruchy[4];
+  /* utworzenie obiektów */
   plansza mapa;
   postaæ gracz_glowny;
   Czcionka Wersja;
@@ -25,13 +27,13 @@ int main()
   walka systemWalki;
   zegar zegarSys;
   zegar zegarWalki;
-
+  /* wywo³anie pierwszych metod obiektów, ³adowanie itd; */
     mapa.zaladuj();
 	gracz_glowny.zaladuj();
 	waz.wczytaj();
 	Wersja.zaladujCzcionke();
-	 gracz_glowny.zycieGracz = gracz_glowny.czyZyje();
-	 waz.zycieWaz = waz.czyZyje();
+	gracz_glowny.zycieGracz = gracz_glowny.czyZyje();
+	waz.zycieWaz = waz.czyZyje();
 
   RenderWindow Okno(VideoMode(800, 600), "Render", Style::Close);
   Okno.setFramerateLimit(60);
@@ -42,8 +44,9 @@ int main()
    Event zdarzenia; // inicjacja zmiennej typu Event do wylapywania zdarzen
  
 
-	  while(Okno.isOpen()) // petla czasu
+	  while(Okno.isOpen()) // dopóki okno jest otwarte
 	 {
+		int aktualnyRuch = (rand()% 4 ) + 1; //
 		zegarSys.wlaczZegar();
 		gracz_glowny.zycieGracz = gracz_glowny.czyZyje();
 		waz.zycieWaz = waz.czyZyje();
@@ -51,9 +54,30 @@ int main()
 		gracz_glowny.ustawObwiednie();
 	    waz.ustawObwiednie();
 		zegarSys.sprawdzCzas(zegarSys.minal1, waz.krok1);
-		waz.ruch(zegarSys.porownanieCzas); //jesli porownanieCzas bêdzie false to w¹¿ sie nie ruszy, sprawdzana jest zmienna w tym przypadku typu Time krok1 -> patrz enemy.h
+		//waz.ruchGora(zegarSys.porownanieCzas); //jesli porownanieCzas bêdzie false to w¹¿ sie nie ruszy, sprawdzana jest zmienna w tym przypadku typu Time krok1 -> patrz enemy.h
 		zegarWalki.wlaczZegar();
 		zegarWalki.sprawdzCzas(zegarWalki.minal1, systemWalki.przerwa);
+		/*
+			Ten switch ustala na podstawie zmiennej aktualnyRuch, w któr¹ stronê ma siê przeciwnik poruszyæ
+			(na razie jeden, potem wiêcej), na razie nie dzia³a, do naprawy
+		*/
+		switch (aktualnyRuch)
+		{
+		case 1:
+			waz.ruchGora(zegarSys.porownanieCzas);
+			break;
+		case 2:
+			waz.ruchDol(zegarSys.porownanieCzas);
+			break;
+		case 3:
+			waz.ruchLewo(zegarSys.porownanieCzas);
+			break;
+		case 4:
+			waz.ruchPrawo(zegarSys.porownanieCzas);
+			break;
+		default:
+			break;
+		}
 		
 			while (Okno.pollEvent(zdarzenia)) // petla zdarzen
 			{
@@ -117,12 +141,6 @@ int main()
 								systemWalki.rozpoczeta = false;
 							}
 						}
-						/*systemWalki.walcz(gracz_glowny.hp, gracz_glowny.obr, waz.hp, waz.obr);
-						waz.hp = systemWalki.przeciwnikHP;
-						gracz_glowny.hp = systemWalki.graczHP;
-						gracz_glowny.zyje = gracz_glowny.czyZyje();
-						waz.zyje = waz.czyZyje();
-						zegarWalki.restartZegar();*/
 				}else
 				{
 					bool kolizja = false;

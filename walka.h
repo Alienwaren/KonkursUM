@@ -19,6 +19,8 @@ public:
 	bool rozpoczeta;
 	bool komunikat;
 	bool komunikat2;
+	bool zycieGracz;
+	bool zycieWrog;
 	Time przerwa;
 };
 

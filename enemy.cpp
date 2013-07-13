@@ -18,6 +18,10 @@ enemy::enemy(void)
 	iloscKrokow = 0;
 	cryt = (agl * 0.5f)/ 100;
 	pozycja_x = duchWrog.getPosition();
+	for(int i = 0; i < 4; i++) // inicjacja tablicy do maszyny losuj¹cej ruch postaci, aby by³ "nie powtarzalny", patrz main();
+	{
+		ruchy[i] = i + 1;
+	}
 	zyje = true;
 }
 int enemy::wczytaj()
@@ -42,7 +46,7 @@ void enemy::ustawObwiednie()
 	kolizjaWrog = duchWrog.getGlobalBounds();
 
 }
-bool enemy::ruch(bool krok) // dot. ruchu. Patrz funkcja w zegar.cpp/porownanie();
+bool enemy::ruchGora(bool krok) // dot. ruchu. Patrz funkcja w zegar.cpp/porownanie();
 {
 	if(krok == true && iloscKrokow <= 100)
 	{
@@ -57,7 +61,51 @@ bool enemy::ruch(bool krok) // dot. ruchu. Patrz funkcja w zegar.cpp/porownanie(
 	return krok;
 	
 }
-
+bool enemy::ruchDol(bool krok)
+{
+	if(krok == true && iloscKrokow <= 100)
+	{
+		szybkosc += przyspieszenie;
+		duchWrog.move(0, przyspieszenie);
+		if(szybkosc > maxSzybkosc)
+		{
+			szybkosc = maxSzybkosc;
+		}
+		iloscKrokow++;
+	}
+	return krok;
+	
+}
+bool enemy::ruchLewo(bool krok)
+{
+	if(krok == true && iloscKrokow <= 100)
+	{
+		szybkosc += przyspieszenie;
+		duchWrog.move(-0, przyspieszenie);
+		if(szybkosc > maxSzybkosc)
+		{
+			szybkosc = maxSzybkosc;
+		}
+		iloscKrokow++;
+	}
+	return krok;
+	
+}
+bool enemy::ruchPrawo(bool krok)
+{
+	if(krok == true && iloscKrokow <= 100)
+	{
+		szybkosc += przyspieszenie;
+		duchWrog.move(0, przyspieszenie);
+		if(szybkosc > maxSzybkosc)
+		{
+			szybkosc = maxSzybkosc;
+		}
+		iloscKrokow++;
+	}
+	return krok;
+	
+}
 enemy::~enemy(void)
 {
 }
