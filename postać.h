@@ -26,6 +26,7 @@ public:
 	float cryt;
 	bool zycieGracz;
 	bool zyje;
+	float iloscKrokow;
 protected:
 	float str;
 	float intel;
@@ -34,7 +35,6 @@ protected:
 	float mana;
 	float lvl;
 	float exp;
-	float iloscKrokow;
 	float przyspieszenie;
 	float szybkosc;
 	float maxSzybkosc;

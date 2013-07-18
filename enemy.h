@@ -24,6 +24,7 @@ public:
 	Time krok1;
 	Time krok2;
 	bool zycieWaz;
+	bool ruszylSie;
 protected:
 	Texture grafikaWrog;
 	bool ruszylKrok1;

@@ -10,6 +10,7 @@
 #include "enemy.h"
 #include "walka.h"
 #include "zegar.h"
+#include "starozytna.h"
 #include <ctime>
 using std::cout;
 using namespace sf;
@@ -18,7 +19,6 @@ using namespace sf;
 
 int main()
 {
-	srand(time(NULL)); // maszyna losuj¹ca do ruchu, patrz enemy.h, zmienna ruchy[4];
   /* utworzenie obiektów */
   plansza mapa;
   postaæ gracz_glowny;
@@ -35,7 +35,7 @@ int main()
 	gracz_glowny.zycieGracz = gracz_glowny.czyZyje();
 	waz.zycieWaz = waz.czyZyje();
 
-  RenderWindow Okno(VideoMode(800, 600), "Render", Style::Close);
+  RenderWindow Okno(VideoMode(800, 600), "Render", Style::Close); // utworzenie okna i ustawienie limitu FPS
   Okno.setFramerateLimit(60);
 
   					
@@ -46,7 +46,7 @@ int main()
 
 	  while(Okno.isOpen()) // dopóki okno jest otwarte
 	 {
-		int aktualnyRuch = (rand()% 4 ) + 1; //
+		
 		zegarSys.wlaczZegar();
 		gracz_glowny.zycieGracz = gracz_glowny.czyZyje();
 		waz.zycieWaz = waz.czyZyje();
@@ -54,31 +54,9 @@ int main()
 		gracz_glowny.ustawObwiednie();
 	    waz.ustawObwiednie();
 		zegarSys.sprawdzCzas(zegarSys.minal1, waz.krok1);
-		//waz.ruchGora(zegarSys.porownanieCzas); //jesli porownanieCzas bêdzie false to w¹¿ sie nie ruszy, sprawdzana jest zmienna w tym przypadku typu Time krok1 -> patrz enemy.h
+		waz.ruchGora(zegarSys.porownanieCzas); //jesli porownanieCzas bêdzie false to w¹¿ sie nie ruszy, sprawdzana jest zmienna w tym przypadku typu Time krok1 -> patrz enemy.h
 		zegarWalki.wlaczZegar();
-		zegarWalki.sprawdzCzas(zegarWalki.minal1, systemWalki.przerwa);
-		/*
-			Ten switch ustala na podstawie zmiennej aktualnyRuch, w któr¹ stronê ma siê przeciwnik poruszyæ
-			(na razie jeden, potem wiêcej), na razie nie dzia³a, do naprawy
-		*/
-		switch (aktualnyRuch)
-		{
-		case 1:
-			waz.ruchGora(zegarSys.porownanieCzas);
-			break;
-		case 2:
-			waz.ruchDol(zegarSys.porownanieCzas);
-			break;
-		case 3:
-			waz.ruchLewo(zegarSys.porownanieCzas);
-			break;
-		case 4:
-			waz.ruchPrawo(zegarSys.porownanieCzas);
-			break;
-		default:
-			break;
-		}
-		
+		zegarWalki.sprawdzCzas(zegarWalki.minal1, systemWalki.przerwa); // sprawdzenie czy cios moze byc zadany, do zmiany bo na sztywno ustawiono
 			while (Okno.pollEvent(zdarzenia)) // petla zdarzen
 			{
 				
@@ -169,7 +147,7 @@ int main()
 
 	  Okno.display();
 			
-	  
+	  waz.ruszylSie = false;
   }
 	  
 		

@@ -15,7 +15,7 @@ enemy::enemy(void)
 	przyspieszenie = 0.5f;
 	maxSzybkosc = 10;
 	ruszylKrok1 = false;
-	iloscKrokow = 0;
+	iloscKrokow = 0; //patrz postaæ.h/public/float iloscKrokow
 	cryt = (agl * 0.5f)/ 100;
 	pozycja_x = duchWrog.getPosition();
 	for(int i = 0; i < 4; i++) // inicjacja tablicy do maszyny losuj¹cej ruch postaci, aby by³ "nie powtarzalny", patrz main();
@@ -23,6 +23,7 @@ enemy::enemy(void)
 		ruchy[i] = i + 1;
 	}
 	zyje = true;
+	ruszylSie = false;
 }
 int enemy::wczytaj()
 {

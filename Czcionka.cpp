@@ -16,7 +16,7 @@ int Czcionka::zaladujCzcionke()
 	}else
 	{
 	Napis.setFont(Arial);
-	Napis.setString("Beta Prealphy 0.0.0.2, YAY! WAZ SIE RUSZA SAM ! *.*");
+	Napis.setString("Beta Prealphy 0.0.0.3 Coœ siê rusza");
 	Napis.setCharacterSize(20);
 	Napis.setColor(Color::White);
 	Napis.setStyle(Text::Bold);
