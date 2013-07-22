@@ -21,7 +21,10 @@ int plansza::zaladuj()
 	Mapa.setTexture(Tlo);
 	}
 }
-
+void plansza::ustawObwiednie()
+{
+	obwiednia = Mapa.getGlobalBounds();
+}
 
 	
 

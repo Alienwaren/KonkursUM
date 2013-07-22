@@ -8,7 +8,8 @@ class jednostka
 public:
 	jednostka(void);
 	~jednostka(void);
-	Vector2f pozycja_x;
+	float pozycja_x;
+	float pozycja_y;
 	int zasiegWzroku;
 	int ustawZasieg();
 };

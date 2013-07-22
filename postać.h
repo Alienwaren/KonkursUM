@@ -27,6 +27,7 @@ public:
 	bool zycieGracz;
 	bool zyje;
 	float iloscKrokow;
+
 protected:
 	float str;
 	float intel;
@@ -39,7 +40,7 @@ protected:
 	float szybkosc;
 	float maxSzybkosc;
 	Texture grafikaPostaci;
-	
+	void rzucZaklecie(bool rzucone);
 	
 };
 

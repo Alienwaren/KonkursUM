@@ -6,7 +6,7 @@ jednostka::jednostka(void)
 }
 int jednostka::ustawZasieg()
 {
-	zasiegWzroku = 3; // TODO: OSOBNE ZASIEGI DLA KAZDEJ POSTACI
+	zasiegWzroku = 3; // TODO: OSOBNE ZASIEGI DLA KAZDEJ POSTAC
 	return zasiegWzroku;
 }
 

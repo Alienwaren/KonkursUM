@@ -14,6 +14,7 @@ postaæ::postaæ(void)
     obr = str * 0.5f;
 	przyspieszenie = 2.f;
 	maxSzybkosc = 5;
+	szybkosc = 1;
 	cryt = (agl * 0.5f)/ 100;
 	zyje = false;
 	
@@ -35,6 +36,7 @@ float postaæ::zaladuj()
 	duchPostaci.move(400, 590); // poruszenie postaci
 	
 	}
+	return EXIT_SUCCESS;
 }
 void postaæ::ustawObwiednie()
 {
@@ -89,7 +91,13 @@ void postaæ::ruchPrawo()
 		szybkosc = maxSzybkosc;
 	}
 }
-
+void postaæ::rzucZaklecie(bool rzucone)
+{
+	if(rzucone == true)
+	{
+		//todo: odjemowanie many, zucenie zaklecie
+	}
+}
 
 postaæ::~postaæ(void)
 {

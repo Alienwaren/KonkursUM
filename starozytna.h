@@ -10,10 +10,14 @@ class starozytna :
 public:
 	starozytna(void);
 	~starozytna(void);
-	void zaladuj();
+	void lot(); // okreslenie czy spacja jest wcisnieta, patrz main
+	int zaladuj();
 	bool sprawdzKolizje();
 	float zadajObrazenia();
-	FloatRect ustawObwiednie();
+	FloatRect kolizja;
+	void ustawObwiednie();
+	Texture teksturaZaklecia;
+	Sprite duchZaklecie;
 	
 };
 

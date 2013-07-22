@@ -9,8 +9,10 @@ class plansza
 public:
 	plansza(void);
 	int zaladuj();
+	void ustawObwiednie();
 	~plansza(void);
 	Sprite Mapa;
+	FloatRect obwiednia;
 protected:
 	Texture Tlo;
 	

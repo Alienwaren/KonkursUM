@@ -27,6 +27,7 @@ int main()
   walka systemWalki;
   zegar zegarSys;
   zegar zegarWalki;
+  starozytna strzala;
   /* wywo³anie pierwszych metod obiektów, ³adowanie itd; */
     mapa.zaladuj();
 	gracz_glowny.zaladuj();
@@ -34,6 +35,9 @@ int main()
 	Wersja.zaladujCzcionke();
 	gracz_glowny.zycieGracz = gracz_glowny.czyZyje();
 	waz.zycieWaz = waz.czyZyje();
+	strzala.zaladuj();
+	bool wcisnieta = false; // przeniesc do klasy zaklecia
+
 
   RenderWindow Okno(VideoMode(800, 600), "Render", Style::Close); // utworzenie okna i ustawienie limitu FPS
   Okno.setFramerateLimit(60);
@@ -57,7 +61,11 @@ int main()
 		waz.ruchGora(zegarSys.porownanieCzas); //jesli porownanieCzas bêdzie false to w¹¿ sie nie ruszy, sprawdzana jest zmienna w tym przypadku typu Time krok1 -> patrz enemy.h
 		zegarWalki.wlaczZegar();
 		zegarWalki.sprawdzCzas(zegarWalki.minal1, systemWalki.przerwa); // sprawdzenie czy cios moze byc zadany, do zmiany bo na sztywno ustawiono
-			while (Okno.pollEvent(zdarzenia)) // petla zdarzen
+		mapa.ustawObwiednie();
+		strzala.ustawObwiednie();
+		strzala.pobierzPozycje();
+		
+		while (Okno.pollEvent(zdarzenia)) // petla zdarzen
 			{
 				
 			
@@ -104,10 +112,17 @@ int main()
 				{
 					zegarSys.zegar1.restart();
 				}
+				if(Keyboard::isKeyPressed(Keyboard::Space) && wcisnieta == false)
+				{
+					wcisnieta = true;
+				}
+			/*	if(wcisnieta = true)
+				{
+					strzala.lot();
+				}*/
 				if(gracz_glowny.kolizja.intersects(waz.kolizjaWrog)) //Podstawa systemu walki, komentarza pod spodem nie ruszac za chiny ludowe, UNDER CONSTRUCTION!
 				{
-					/*	bool kolizja = true;
-						systemWalki.rozpocznijWalke(kolizja);*/
+
 					systemWalki.rozpoczeta = true;
 						if(systemWalki.rozpoczeta == true && zegarSys.minal1 >= systemWalki.przerwa)
 						{
@@ -119,15 +134,15 @@ int main()
 								systemWalki.rozpoczeta = false;
 							}
 						}
-				}else
-				{
-					bool kolizja = false;
-					systemWalki.rozpocznijWalke(kolizja);
 				}
+			/*	if(strzala.kolizja.intersects(waz.kolizjaWrog))
+				{
+					strzala.duchZaklecie.move(400, 590);
+				}*/
 				
 			}
 
-
+	  
 	  Okno.clear(Color::Black);
 	  Okno.draw(mapa.Mapa);
 	  if(gracz_glowny.zycieGracz == true)
@@ -142,16 +157,19 @@ int main()
 
 		  Okno.draw(waz.duchWrog);
 	  }
-	
+	  
 	  Okno.draw(Wersja.Napis);
+	  if(wcisnieta == true)
+	  Okno.draw(strzala.duchZaklecie);
 
 	  Okno.display();
 			
-	  waz.ruszylSie = false;
-  }
-	  
-		
-			return 0;
 
-}
 	  
+	  }
+
+
+	return 0;
+ }
+	
+ 
