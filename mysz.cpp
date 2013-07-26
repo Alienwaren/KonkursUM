@@ -7,7 +7,9 @@ mysz::mysz(void)
 Vector2i mysz::pobierzPozycjeMyszy()
 {
 	pozycjaMyszy = Mouse::getPosition();
-	pozycjaFloat = static_cast<Vector2f>(pozycjaMyszy); // zmiana typu z Vector2i na Vector2f :D
+	pozycjaFloat = static_cast<Vector2f>(pozycjaMyszy); 
+	poprzedniaPozycjaX = pozycjaFloat.x;
+	poprzedniaPozycjaY = pozycjaFloat.y;
 	return pozycjaMyszy;
 }
 

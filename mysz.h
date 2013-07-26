@@ -9,6 +9,9 @@ public:
 	Vector2i pozycjaMyszy;
 	Vector2i pobierzPozycjeMyszy();
 	Vector2f pozycjaFloat;
+	void ustawPozycje();
+	float poprzedniaPozycjaX;
+	float poprzedniaPozycjaY;
 	~mysz(void);
 };
 

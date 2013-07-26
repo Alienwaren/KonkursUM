@@ -10,7 +10,7 @@ public:
 	void stworz();
 	void nadajKolor();
 	void zmienPozycje(float x, float y);
-	
+	void ustawPozycje(float x, float y);
 	int zaladuj();
 	~obrazek(void);
 	Texture teksturaObrazka;
