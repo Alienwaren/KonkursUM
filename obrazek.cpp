@@ -9,7 +9,7 @@ void obrazek::stworz()
 }
 void obrazek::nadajKolor()
 {
-
+	duchObrazek.setColor(Color::Yellow); // do zmiany
 }
 void obrazek::zmienPozycje(float x, float y)
 {
@@ -25,7 +25,8 @@ int obrazek::zaladuj()
 		duchObrazek.setTexture(teksturaObrazka);
 		duchObrazek.setOrigin(400,300);
 		duchObrazek.setPosition(512, 393);
-		duchObrazek.setColor(Color::Yellow);
+		duchObrazek.setColor(Color(200,200,200,128));
+		
 		return EXIT_SUCCESS;
 	}
 }

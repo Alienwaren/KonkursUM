@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
-using namespace sf;
+using sf::Color;
+using sf::Texture;
+using sf::Sprite;
 
 class obrazek
 {
@@ -15,4 +17,6 @@ public:
 	~obrazek(void);
 	Texture teksturaObrazka;
 	Sprite duchObrazek;
+
+	
 };

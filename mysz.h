@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
-using namespace sf;
+using sf::Mouse;
+using sf::Vector2i;
+using sf::Vector2f;
 class mysz
 {
 public:
@@ -10,8 +12,6 @@ public:
 	Vector2i pobierzPozycjeMyszy();
 	Vector2f pozycjaFloat;
 	void ustawPozycje();
-	float poprzedniaPozycjaX;
-	float poprzedniaPozycjaY;
 	~mysz(void);
 };
 

@@ -12,11 +12,21 @@ class czesc :
 {
 public:
 	czesc(void);
-	Texture czesciObrazka[8];
-	Sprite duchyObrazka[8];
-	int ilosc;
-	string nazwaPliku;
+	Texture czesciObrazka[9];
+	Sprite duchyObrazka[9];
+	float dodajKoordynaty();
+	void ruch();
+	float x,y, pozycjaX[9], pozycjaY[9];
 	void zaladuj();
+	void pobierzPozycje();
+	void ustawPozycje(); // setPosition
+	int ilosc;
 	~czesc(void);
+protected:
+	string nazwaPliku;
+	string png;
+	int odleglascPomiedy;
+
 };
+
 

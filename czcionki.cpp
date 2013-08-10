@@ -14,7 +14,7 @@ int czcionki::zaladuj()
 	
 		wypisz.setFont(napis);
 		wypisz.setCharacterSize(30);
-		wypisz.setString("Puzzle inDev");
+		wypisz.setString("Puzzle inDev 0.0.0.1");
 		wypisz.setColor(Color::White);
 		return EXIT_SUCCESS;
 	
