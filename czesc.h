@@ -14,12 +14,12 @@ public:
 	czesc(void);
 	Texture czesciObrazka[9];
 	Sprite duchyObrazka[9];
-	float dodajKoordynaty();
-	void ruch();
+	FloatRect obwiednieKolizje[9];
 	float x,y, pozycjaX[9], pozycjaY[9];
 	void zaladuj();
 	void pobierzPozycje();
 	void ustawPozycje(); // setPosition
+	void ruch(); // move
 	int ilosc;
 	~czesc(void);
 protected:

@@ -25,19 +25,9 @@ void czesc::zaladuj()
 		}
 			duchyObrazka[i].setTexture(czesciObrazka[i]); // ustawienie sprite od tekstur
 			duchyObrazka[i].setOrigin(100, 150);
+			obwiednieKolizje[i] = duchyObrazka[i].getGlobalBounds();
 
 	}
-}
-float czesc::dodajKoordynaty()
-{
-	x += 10;
-	y += 10;
-	return x,y;
-}
-void czesc::ruch()
-{
-	for(int i = 1; i <= ilosc; i++)
-		duchyObrazka[i].move(x,y);
 }
 void czesc::pobierzPozycje()
 {
@@ -52,17 +42,17 @@ void czesc::ustawPozycje()
 {
 	for(int i = 1; i <= ilosc; i++)
 	{
-		x = 200; 
-		x += i + 10;
-		
 		duchyObrazka[i].setPosition(x, 150);
-		
 	}
+	
+}
+void czesc::ruch()
+{
 	for(int i = 1; i <= ilosc; i++)
 	{
-		odleglascPomiedy = 50; 
-		duchyObrazka[i].move(odleglascPomiedy, 0);
-		odleglascPomiedy += 100;
+		odleglascPomiedy = 10;
+		duchyObrazka[i].move(odleglascPomiedy * i, 0);
+		
 		
 	}
 }

@@ -1,3 +1,6 @@
+/*
+Do niekumatego: Bêdzie ma³o komentarzy. Funkcje same za siebie mówi¹ (!)
+*/
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include "obrazek.h"
@@ -12,7 +15,7 @@ using namespace sf;
 
 int main()
 {
-	int i = 1;
+	int i = 0;
     RenderWindow oknoGry(VideoMode(1024, 768), "Okno Glowne", Style::Close);
 	obrazek obrazekJeden;
 	mysz myszGry;
@@ -25,23 +28,36 @@ int main()
 	kwadrat kwadratMain;
 	puzleJeden.ustawPozycje();
 	oknoGry.setFramerateLimit(60);
+	puzleJeden.ruch();
+
 	while(oknoGry.isOpen())
 	{	
+	myszGry.kwadratMysz.setPosition(myszGry.pozycjaFloat.x, myszGry.pozycjaFloat.y);
 	// #TODO: Do zrobienia jako funkcja w mysz.cpp
 	myszGry.pozycjaMyszy = Mouse::getPosition(oknoGry);
 	myszGry.pozycjaFloat = static_cast<Vector2f>(myszGry.pozycjaMyszy);  // zmiana typu z Vector2i na Vector2f
 	// #ENDTODO
 	
 	puzleJeden.pobierzPozycje();
-	
-
+	myszGry.ustawParametryKwadratu();
+	for(i = 1; i >= 9; i++)
+	{
+		myszGry.sprawdzKolizje(puzleJeden.obwiednieKolizje[i], i);
+	}
+	if(myszGry.wystapilyKolizje[8] == true && Mouse::isButtonPressed(Mouse::Button::Left))
+	{
+		puzleJeden.duchyObrazka[8].setPosition(myszGry.pozycjaFloat.x, myszGry.pozycjaFloat.y);
+		cout << "KOLIZJA!";
+	}
 		while(oknoGry.pollEvent(Zdarzenia))
 		{
+			//dodaæ czesci fora
 			if(Zdarzenia.type == Event::Closed)
 			{
 				oknoGry.close();
 				return 0;
 			}
+			//#Do wywalenia potem
 			if(Mouse::isButtonPressed(Mouse::Button::Left) && Keyboard::isKeyPressed(Keyboard::Num1))
 			{
 				puzleJeden.duchyObrazka[1].setPosition(myszGry.pozycjaFloat.x,myszGry.pozycjaFloat.y);
@@ -74,6 +90,7 @@ int main()
 			{
 				puzleJeden.duchyObrazka[8].setPosition(myszGry.pozycjaFloat.x,myszGry.pozycjaFloat.y);
 			}
+			//#END DO WYWALENIA
 			
 		 }
 		
@@ -87,7 +104,9 @@ int main()
 		
 		oknoGry.draw(napisWersji.wypisz);
 		oknoGry.draw(kwadratMain.kwadratMyszy);
+		oknoGry.draw(myszGry.kwadratMysz);
 		oknoGry.display();
+		i = 1;
 	}
     return 0;
 }

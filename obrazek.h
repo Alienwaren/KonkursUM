@@ -4,6 +4,7 @@
 using sf::Color;
 using sf::Texture;
 using sf::Sprite;
+using sf::FloatRect;
 
 class obrazek
 {
